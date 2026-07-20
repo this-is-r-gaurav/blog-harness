@@ -99,11 +99,11 @@ Keep TEST_MODE green before wiring any GCP path. No task ships without its notes
     07-manager-guardrail.md
     08-naming-style-commits.md
   skills/                          # repeatable step-by-step procedures
-    scaffold-specialist/SKILL.md
-    add-or-change-contract/SKILL.md
-    add-loop-exit-checker/SKILL.md
-    add-eval-case/SKILL.md
-    run-testmode-pipeline/SKILL.md
+    scaffolding_specialists/SKILL.md
+    adding_or_changing_contracts/SKILL.md
+    adding_loop_exit_checkers/SKILL.md
+    adding_eval_cases/SKILL.md
+    running_testmode_pipeline/SKILL.md
 ```
 
 ### T-0.2 — Author the rules
@@ -155,7 +155,7 @@ Remaining rules (author to the same shape):
 
 Skills are the "how", turned into copy-paste procedures. Highest-value one, illustrative:
 
-**`skills/scaffold-specialist/SKILL.md`**
+**`skills/scaffolding_specialists/SKILL.md`**
 
 ```markdown
 # Scaffold a new specialist
@@ -165,11 +165,11 @@ Skills are the "how", turned into copy-paste procedures. Highest-value one, illu
    tool list, input contract. Do NOT hand-roll auth/observability/serving. (§14 DRY rule)
 4. Wrap via blog_agent_kit.build(): expands tool-using specialists into the two-node
    worker→structurer unit (§3), installs observability + auth + output_schema binding.
-5. Add tests/eval/ dataset (EvalCase + fake-LLM fixture — see skill add-eval-case).
+5. Add tests/eval/ dataset (EvalCase + fake-LLM fixture — see skill adding-eval-cases).
 6. Gate: `make test-mode` green; schema-conformance eval passes for this agent.
 ```
 
-Author the rest analogously: `add-or-change-contract` (edit model → bump version → update fixtures/evals), `add-loop-exit-checker` (deterministic `BaseAgent` template), `add-eval-case` (`EvalCase` + fixture + Tier-0 wiring), `run-testmode-pipeline` (offline end-to-end).
+Author the rest analogously: `adding-or-changing-contracts` (edit model → bump version → update fixtures/evals), `adding-loop-exit-checkers` (deterministic `BaseAgent` template), `adding-eval-cases` (`EvalCase` + fixture + Tier-0 wiring), `running-testmode-pipeline` (offline end-to-end).
 
 **Gate for Part 0:** `AGENTS.md` exists at root; the `.agents/` tree exists with all 9 rule files + 5 skills populated; `.agents/README.md` documents how they are consumed; and `CLAUDE.md` references `AGENTS.md`. This is a documentation gate — no code yet.
 
@@ -381,7 +381,7 @@ Prove `output_schema`+tools via the worker→structurer split works on **both** 
 
 ### T-M1.1 — The 11 specialists as declarative units (§3, §14)
 
-Use the `scaffold-specialist` skill (T-0.3) for each of the 11. Each is just instruction + `output_schema` + tool list + input contract; `blog_agent_kit` does the rest.
+Use the `scaffolding-specialists` skill (T-0.3) for each of the 11. Each is just instruction + `output_schema` + tool list + input contract; `blog_agent_kit` does the rest.
 
 ### T-M1.2 — Fake-LLM fixture schema **[PLAN-DECISION — PDD §9.5 leaves this blank]**
 
