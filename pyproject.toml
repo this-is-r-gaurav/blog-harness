@@ -1,0 +1,49 @@
+[project]
+name = "blog-harness"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Gaurav", email = "" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "blog-contracts",
+    "blog-platform",
+    "blog-observability",
+    "blog-agent-kit",
+    "blog-evals",
+    "conductor",
+    "optimizer",
+    "bff",
+    "notification",
+]
+
+[project.scripts]
+blog-harness = "blog_harness:main"
+
+[build-system]
+requires = ["uv_build>=0.11.8,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.workspace]
+members = [
+    "packages/*",
+    "services/conductor",
+    "services/optimizer",
+    "services/bff",
+    "services/notification",
+    "services/specialists/*",
+]
+
+[tool.uv.sources]
+blog-contracts = { workspace = true }
+blog-platform = { workspace = true }
+blog-observability = { workspace = true }
+blog-agent-kit = { workspace = true }
+blog-evals = { workspace = true }
+conductor = { workspace = true }
+optimizer = { workspace = true }
+bff = { workspace = true }
+notification = { workspace = true }
+
